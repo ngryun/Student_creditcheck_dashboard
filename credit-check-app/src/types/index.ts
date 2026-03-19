@@ -25,6 +25,20 @@ export type CurriculumEntry = {
 
 export type CurriculumCatalog = Record<string, CurriculumEntry[]>
 
+/** 선택그룹별 과목 수 제약 조건 */
+export type SelectionGroupConstraint = {
+  그룹명: string
+  학기: string          // e.g. "1-1", "2-1" 등
+  최소선택: number
+  최대선택: number
+}
+
+/** 파서 결과: 교육과정 + 선택그룹 제약 */
+export type CurriculumParseResult = {
+  catalog: CurriculumCatalog
+  constraints: SelectionGroupConstraint[]
+}
+
 export type FutureStats = {
   skippedNoId: number
   skippedNoCourse: number
